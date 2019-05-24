@@ -1,13 +1,13 @@
 version: "2"
 services:
   postgres-server:
-    image: coheigea/ranger-postgres
+    image: ranger-postgres
+    hostname: ranger-for-ads.docker.ads.net
     ports:
       - "5432:5432"
   ranger-admin:
-    image: coheigea/ranger-admin
+    image: ranger-admin
     stdin_open: true
-    tty: true
     depends_on:
       - "postgres-server"
     ports:
