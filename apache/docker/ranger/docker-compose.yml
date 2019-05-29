@@ -1,12 +1,17 @@
-version: "2"
+version: "2.0"
 services:
   postgres-server:
-    image: ranger-postgres
+    build: ./ranger-postgres
+    container_name: ranger-postgres-container
     hostname: ranger-for-ads.docker.ads.net
+#    networks:
+#      custom:
+#        ipv4_address: 172.13.2.01
     ports:
-      - "5432:5432"
+      - "5432:5432"  
   ranger-admin:
-    image: ranger-admin
+    build: ./ranger-admin
+    container_name: ranger-admin-container
     stdin_open: true
     depends_on:
       - "postgres-server"
